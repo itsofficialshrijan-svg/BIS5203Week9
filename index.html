@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Sun and Moon Page</title>
+    <style>
+        body {
+            text-align: center;
+            font-family: Arial, sans-serif;
+            margin-top: 50px;
+        }
+        
+        #title {
+            font-size: 28px;
+            color: #333;
+        }
+        
+        #myImage {
+            width: 150px;
+            margin: 20px;
+        }
+        
+        button {
+            margin: 5px;
+            padding: 8px 15px;
+            font-size: 14px;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+            background-color: #4CAF50;
+            color: white;
+        }
+        
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+
+<body>
+    <h1 id="title">Sun and Moon Changes According to Time</h1>
+    <img id="myImage" alt="">
+
+    <div>
+        <button onclick="showImage()">Show Image</button>
+        <button onclick="hideImage()">Hide Image</button>
+        <button onclick="increaseFont()">Increase Title Font</button>
+        <button onclick="decreaseFont()">Decrease Title Font</button>
+    </div>
+
+    <script>
+        // Load correct image on page load
+        window.onload = function() {
+            const hour = new Date().getHours();
+            const img = document.getElementById("myImage");
+
+            if (hour <= 17) {
+                img.src = "assets/sun.png"; // replace with your actual sun image
+                img.alt = "Sun";
+            } else {
+                img.src = "assets/moon.png"; // replace with your actual moon image
+                img.alt = "Moon";
+            }
+        }
+
+        // Show image
+        function showImage() {
+            document.getElementById("myImage").style.display = "inline";
+        }
+
+        // Hide image
+        function hideImage() {
+            document.getElementById("myImage").style.display = "none";
+        }
+
+        // Increase title font size
+        function increaseFont() {
+            const title = document.getElementById("title");
+            let size = window.getComputedStyle(title, null).getPropertyValue('font-size');
+            title.style.fontSize = (parseFloat(size) + 2) + "px";
+        }
+
+        // Decrease title font size
+        function decreaseFont() {
+            const title = document.getElementById("title");
+            let size = window.getComputedStyle(title, null).getPropertyValue('font-size');
+            title.style.fontSize = (parseFloat(size) - 2) + "px";
+        }
+    </script>
+</body>
+
+</html>
